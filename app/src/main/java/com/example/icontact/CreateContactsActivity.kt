@@ -1,24 +1,20 @@
 package com.example.icontact
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import com.example.icontact.databinding.ActivityMainBinding
 
 class CreateContactsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-
+        setContentView(R.layout.create_contacts)
     }
-
     fun onCancelContactClicked(v: View?) {
-        val intent = Intent(this@CreateContactsActivity, MainActivity::class.java)
-        startActivity(intent);
+        finish();
+//        val intent = Intent(this@CreateContactsActivity, MainActivity::class.java)
+//        startActivity(intent);
     }
 }

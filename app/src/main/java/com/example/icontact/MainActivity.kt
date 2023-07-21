@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
             Contacts("Chinedu Uche", "7054119095"),
             Contacts("Kelvin Junior", "8473445789"),
             Contacts("Felix Don", "987336782"),
+            Contacts("Jerry Gerald", "7069119095"),
+            Contacts("Hakimi Habibi", "8473409789"),
+            Contacts("Tom Cruise", "987226782"),
         ))
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
