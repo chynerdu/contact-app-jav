@@ -1,16 +1,13 @@
 package com.example.icontact
-
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.icontact.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
 
@@ -19,18 +16,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        val adapter = ContactAdapter( arrayOf(
-            Contacts("Chinedu Uche", "7054119095"),
-            Contacts("Kelvin Junior", "8473445789"),
-            Contacts("Felix Don", "987336782"),
-            Contacts("Jerry Gerald", "7069119095"),
-            Contacts("Hakimi Habibi", "8473409789"),
-            Contacts("Tom Cruise", "987226782"),
-        ))
+        val adapter = CreateContactsActivity.contactList
+        adapter.setOnClickListener(object :
+            ContactAdapter.OnClickListener {
+            override fun onClick(position: Int, model: Contacts) {
+                val intent = Intent(this@MainActivity, ContactDetails::class.java)
+                intent.putExtra("NEXT_SCREEN", position)
+                startActivity(intent)
+            }
+        })
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
-
 
 
         binding.floatingActionButton.setOnClickListener(View.OnClickListener {
@@ -38,22 +35,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent);
         })
 
-//        binding.floatingActionButton.setOnClickListener(
-//            object : View.OnClickListener() {
-//                fun onClick(v: View?) {
-//                    val i = Intent(this@MainActivity, MainActivity2::class.java)
-//                    startActivity(i)
-//                }
-//            }
-//        )
+    }
 
+    override fun onRestart() {
+        super.onRestart()
+        val adapter = CreateContactsActivity.contactList
 
     }
-//
-//    var onClickListener: View.OnClickListener = object : View.OnClickListener() {
-//        fun onClick(v: View?) {
-//            startActivity(Intent(action))
-//        }
-//    }
+
+
 }
 
