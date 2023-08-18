@@ -1,7 +1,3 @@
-package com.example.icontact
-
-
-
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +10,10 @@ import com.example.icontact.R
 
 
 
-class ContactAdapter(
-    private val items: MutableList<Contacts>
+class ItemAdapter(
+    private val items: ArrayList<Contacts>
 ) :
-    RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
     private var onClickListener: OnClickListener? = null
 
     // Inflates the item views which is designed in xml layout file
@@ -27,7 +23,7 @@ class ContactAdapter(
         return ViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.contact_item, parent, false)
-        )
+            )
 
     }
 
@@ -90,75 +86,3 @@ class ContactAdapter(
         }
     }
 }
-
-
-class Contacts (
-
-    var name : String,
-    var phone : String
-)
-
-
-
-
-
-
-//class ContactAdapter(private val contact: MutableList<Contacts> ) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
-//    //Implementation of the ViewHolder Class
-//
-//
-//
-//    private var onClickListener: View.OnClickListener? = null
-//
-//    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-//        val nameTextView: TextView
-//        val phonenumberTextView: TextView
-//
-//        init {
-//            nameTextView = view.findViewById(R.id.contactName)
-//            phonenumberTextView = view.findViewById(R.id.contactNumber)
-////            itemView.setOnClickListener(this);
-//
-//        }
-//    }
-//
-//
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        // create new view with UI of Contact item
-//        val view = LayoutInflater.from(parent.context)
-//            .inflate(R.layout.contact_item, parent, false)
-//        return ViewHolder(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        //set element from weather data [using position] to TextView
-//        val item = contact[position]
-//        holder.nameTextView.text = item.name
-//        holder.phonenumberTextView.text = item.phone
-//        println("clicked")
-//        holder.itemView.setOnClickListener {
-//            if (onClickListener != null) {
-//                onClickListener!!.onClick(position, item)
-//            }
-//        }
-//
-//
-//    }
-//
-//    fun setOnClickListener(onClickListener: OnClickListener) {
-//        this.onClickListener = onClickListener
-//    }
-//
-//    interface OnClickListener : View.OnClickListener {
-//        fun onClick(position: Int, model: Contacts)
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return contact.size
-//    }
-//
-//    fun addContacts(newContact: Contacts) {
-//        contact.add(newContact)
-//    }
-//}
