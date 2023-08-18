@@ -67,7 +67,9 @@
             android:layout_width="15dp"
             android:layout_height="25dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_delete_outline_24">
+            android:src="@drawable/ic_baseline_delete_outline_24"
+             android:onClick="onDeleteContactClicked"
+        >
         </ImageView>
     </LinearLayout>
     </LinearLayout>

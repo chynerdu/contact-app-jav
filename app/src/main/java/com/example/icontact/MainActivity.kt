@@ -1,12 +1,11 @@
 package com.example.icontact
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.icontact.databinding.ActivityMainBinding
 
 
@@ -20,14 +19,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 //        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        val adapter = ContactAdapter( arrayOf(
-            Contacts("Chinedu Uche", "7054119095"),
-            Contacts("Kelvin Junior", "8473445789"),
-            Contacts("Felix Don", "987336782"),
-            Contacts("Jerry Gerald", "7069119095"),
-            Contacts("Hakimi Habibi", "8473409789"),
-            Contacts("Tom Cruise", "987226782"),
-        ))
+        val adapter = CreateContactsActivity.contactList
+//            ContactAdapter( arrayOf(
+//            Contacts("Chinedu Uche", "7054119095"),
+//            Contacts("Kelvin Junior", "8473445789"),
+//            Contacts("Felix Don", "987336782"),
+//            Contacts("Jerry Gerald", "7069119095"),
+//            Contacts("Hakimi Habibi", "8473409789"),
+//            Contacts("Tom Cruise", "987226782"),
+//        ))
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
 
@@ -55,5 +55,20 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(Intent(action))
 //        }
 //    }
+
+
+    override fun onRestart() {
+        super.onRestart()
+        val adapter = CreateContactsActivity.contactList
+        // do some stuff here
+    }
+
+    fun onDeleteContactClicked(view: View) {
+        val itemPosition: Int = binding.recyclerView.getChildLayoutPosition(view)
+//        print(itemPosition)
+//        val item: String = mList.get(itemPosition)
+//        Toast.makeText(mContext, item, Toast.LENGTH_LONG).show()
+    }
+
 }
 

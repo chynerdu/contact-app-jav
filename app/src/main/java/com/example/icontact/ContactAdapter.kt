@@ -13,7 +13,7 @@ class Contacts (
     var phone : String
 )
 
-class ContactAdapter(private val contact: Array<Contacts>) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
+class ContactAdapter(private val contact: MutableList<Contacts>) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
     //Implementation of the ViewHolder Class
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameTextView: TextView
@@ -28,7 +28,7 @@ class ContactAdapter(private val contact: Array<Contacts>) : RecyclerView.Adapte
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // create new view with UI of weather item
+        // create new view with UI of Contact item
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.contact_item, parent, false)
         return ViewHolder(view)
@@ -42,5 +42,9 @@ class ContactAdapter(private val contact: Array<Contacts>) : RecyclerView.Adapte
 
     override fun getItemCount(): Int {
         return contact.size
+    }
+
+    fun addContacts(newContact: Contacts) {
+        contact.add(newContact)
     }
 }
